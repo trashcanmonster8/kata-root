@@ -20,4 +20,9 @@ describe(Trip.name, () => {
     it('#duration', () => {
         strictEqual(trip.duration, 1.5);
     });
+    it('#parse', () => {
+        const data: string[] = ['Trip', driver.name, startTime, endTime, mileage.toString()];
+        const trip: Trip = Trip.parse(data.join(' '));
+        strictEqual(trip.mileage, mileage);
+    });
 });

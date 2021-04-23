@@ -1,6 +1,11 @@
 import { Driver } from './driver';
 
 export class Trip {
+    public static parse(command: string): Trip {
+        const parts: string[] = command.split(' ');
+        return new Trip(new Driver(parts[1]), parts[2], parts[3], parseFloat(parts[4]));
+    }
+
     private startTime: number;
     private endTime: number;
     constructor(
