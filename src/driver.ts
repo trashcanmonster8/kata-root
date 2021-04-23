@@ -1,3 +1,7 @@
 export class Driver {
-    constructor(public name: string) {}
+    constructor(private nameValue: string) {}
+
+    get name(): string {
+        return this.nameValue;
+    }
 }
