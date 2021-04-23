@@ -11,6 +11,6 @@ export class Summary {
             totalMiles += trip.mileage;
             totalTime += trip.duration;
         });
-        return totalMiles / totalTime;
+        return Math.round(totalMiles / totalTime);
     }
 }
