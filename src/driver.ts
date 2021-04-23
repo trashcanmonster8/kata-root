@@ -1,3 +1,3 @@
 export class Driver {
-    constructor(public name: String) {}
+    constructor(public name: string) {}
 }
