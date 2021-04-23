@@ -4,15 +4,15 @@ import { Trip } from '../src/trip';
 
 describe(Trip.name, () => {
     const mileage = 12.3;
-    const driver = 'frank';
+    const driver: Driver = new Driver('frank');
     let trip: Trip;
     before(() => {
-        trip = new Trip(new Driver(driver), mileage);
+        trip = new Trip(driver, mileage);
     });
     it('#mileage', () => {
         strictEqual(trip.mileage, mileage);
     });
     it('#driver', () => {
-        strictEqual(trip.driver, driver);
+        strictEqual(trip.driver, driver.name);
     });
 });
