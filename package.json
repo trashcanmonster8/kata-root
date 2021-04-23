@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint . --fix",
     "test": "mocha",
-    "coverage": "nyc mocha"
+    "coverage": "nyc mocha",
+    "precommit": "npm run lint && npm run coverage"
   },
   "repository": {
     "type": "git",
