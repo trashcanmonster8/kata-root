@@ -13,4 +13,12 @@ export class Summary {
         });
         return Math.round(totalMiles / totalTime);
     }
+
+    get totalDistance(): number {
+        let totalMiles = 0;
+        this.trips.forEach((trip: Trip) => {
+            totalMiles += trip.mileage;
+        });
+        return Math.round(totalMiles);
+    }
 }
