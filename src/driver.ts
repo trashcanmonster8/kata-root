@@ -1,4 +1,9 @@
 export class Driver {
+    public static parse(command: string): Driver {
+        const name: string = command.split(' ')[1];
+        return new Driver(name);
+    }
+
     private nameValue: string;
 
     constructor(name: string) {
