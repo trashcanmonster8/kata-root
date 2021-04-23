@@ -1,7 +1,7 @@
 import { Driver } from './driver';
 import { Trip } from './trip';
 
-export class Summary {
+export class DriverSummary {
     constructor(private driver: Driver, private trips: Trip[]) {}
 
     get averageSpeed(): number {
