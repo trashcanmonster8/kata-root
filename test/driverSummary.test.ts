@@ -32,4 +32,10 @@ describe(DriverSummary.name, () => {
             strictEqual(summary.totalDistance, 39);
         });
     });
+    it('#addTrip', () => {
+        const trips: Trip[] = [new Trip(driver, '06:12', '06:32', 21.8)];
+        const summary: DriverSummary = new DriverSummary(driver, trips);
+        summary.addTrip(new Trip(driver, '07:15', '07:45', 17.3));
+        strictEqual(summary.totalDistance, 39);
+    });
 });

@@ -25,4 +25,8 @@ export class DriverSummary {
     get driverName(): string {
         return this.driver.name;
     }
+
+    public addTrip(trip: Trip): void {
+        this.trips.push(trip);
+    }
 }
