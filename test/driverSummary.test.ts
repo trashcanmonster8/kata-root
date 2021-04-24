@@ -9,6 +9,10 @@ describe(DriverSummary.name, () => {
         strictEqual(new DriverSummary(new Driver('tom'), []).driver, 'Tom');
     });
     describe('#averageSpeed', () => {
+        it('no travel', () => {
+            const summary: DriverSummary = new DriverSummary(new Driver('whatever'), []);
+            strictEqual(summary.averageSpeed, 0);
+        });
         it('single trip', () => {
             const trips: Trip[] = [new Trip(driver, '12:01', '13:16', 42.0)];
             const summary: DriverSummary = new DriverSummary(driver, trips);

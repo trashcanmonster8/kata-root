@@ -12,7 +12,7 @@ export class DriverSummary implements Output {
             totalMiles += trip.mileage;
             totalTime += trip.duration;
         });
-        return Math.round(totalMiles / totalTime);
+        return totalTime > 0 ? Math.round(totalMiles / totalTime) : 0;
     }
 
     get totalDistance(): number {
