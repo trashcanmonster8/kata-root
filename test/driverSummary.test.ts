@@ -1,4 +1,4 @@
-import { strictEqual } from 'assert';
+import { strictEqual, deepStrictEqual } from 'assert';
 import { Driver } from '../src/driver';
 import { DriverSummary } from '../src/driverSummary';
 import { Trip } from '../src/trip';
@@ -6,7 +6,7 @@ import { Trip } from '../src/trip';
 describe(DriverSummary.name, () => {
     const driver: Driver = new Driver('fred');
     it('#driverName', () => {
-        strictEqual(new DriverSummary(new Driver('tom'), []).driverName, 'Tom');
+        strictEqual(new DriverSummary(new Driver('tom'), []).driver, 'Tom');
     });
     describe('#averageSpeed', () => {
         it('single trip', () => {
@@ -37,5 +37,14 @@ describe(DriverSummary.name, () => {
         const summary: DriverSummary = new DriverSummary(driver, trips);
         summary.addTrip(new Trip(driver, '07:15', '07:45', 17.3));
         strictEqual(summary.totalDistance, 39);
+    });
+    it('outputs all data', () => {
+        const trips: Trip[] = [new Trip(driver, '06:12', '06:32', 21.8), new Trip(driver, '07:15', '07:45', 17.3)];
+        const summary: DriverSummary = new DriverSummary(driver, trips);
+        deepStrictEqual(summary.summarize(), {
+            driver: 'Fred',
+            totalDistance: 39,
+            averageSpeed: 47,
+        });
     });
 });

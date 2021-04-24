@@ -1,8 +1,9 @@
 import { Driver } from './driver';
+import { Output } from './output';
 import { Trip } from './trip';
 
-export class DriverSummary {
-    constructor(private driver: Driver, private trips: Trip[]) {}
+export class DriverSummary implements Output {
+    constructor(private driverObj: Driver, private trips: Trip[]) {}
 
     get averageSpeed(): number {
         let totalMiles = 0;
@@ -22,11 +23,19 @@ export class DriverSummary {
         return Math.round(totalMiles);
     }
 
-    get driverName(): string {
-        return this.driver.name;
+    get driver(): string {
+        return this.driverObj.name;
     }
 
     public addTrip(trip: Trip): void {
         this.trips.push(trip);
+    }
+
+    public summarize(): Output {
+        return {
+            driver: this.driver,
+            totalDistance: this.totalDistance,
+            averageSpeed: this.averageSpeed,
+        };
     }
 }
