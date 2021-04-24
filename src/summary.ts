@@ -1,22 +1,24 @@
 import { Driver } from './driver';
+import { DriverSummary } from './driverSummary';
 import { Output } from './output';
+import { Trip } from './trip';
 
 export class Summary {
-    private drivers: Driver[] = [];
+    private summaries: DriverSummary[] = [];
 
     public calculate(): Output[] {
         const result: Output[] = [];
-        this.drivers.forEach((driver: Driver) => {
-            result.push({
-                driver: driver.name,
-                totalDistance: 0,
-                averageSpeed: 0,
-            });
+        this.summaries.forEach((summary: DriverSummary) => {
+            result.push(summary.summarize());
         });
         return result;
     }
 
     public addDriver(driver: Driver): void {
-        this.drivers.push(driver);
+        this.summaries.push(new DriverSummary(driver, []));
+    }
+
+    public addTrip(trip: Trip): void {
+        this.summaries[0].addTrip(trip);
     }
 }
