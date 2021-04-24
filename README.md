@@ -87,3 +87,8 @@ Kumi: 0 miles
 #### Output metrics
 
 * Output totals for driver
+
+### Decisions during development
+
+* Write happy path and ignore many edge cases for now
+* Assume text file will be well formed for now
