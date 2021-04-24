@@ -5,6 +5,9 @@ import { Trip } from '../src/trip';
 
 describe(DriverSummary.name, () => {
     const driver: Driver = new Driver('fred');
+    it('#driverName', () => {
+        strictEqual(new DriverSummary(new Driver('tom'), []).driverName, 'Tom');
+    });
     describe('#averageSpeed', () => {
         it('single trip', () => {
             const trips: Trip[] = [new Trip(driver, '12:01', '13:16', 42.0)];

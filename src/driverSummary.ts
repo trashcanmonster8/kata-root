@@ -21,4 +21,8 @@ export class DriverSummary {
         });
         return Math.round(totalMiles);
     }
+
+    get driverName(): string {
+        return this.driver.name;
+    }
 }
