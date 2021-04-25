@@ -9,8 +9,10 @@ export class DriverSummary implements Output {
         let totalMiles = 0;
         let totalTime = 0;
         this.trips.forEach((trip: Trip) => {
-            totalMiles += trip.mileage;
-            totalTime += trip.duration;
+            if (trip.speed >= 5) {
+                totalMiles += trip.mileage;
+                totalTime += trip.duration;
+            }
         });
         return totalTime > 0 ? Math.round(totalMiles / totalTime) : 0;
     }
@@ -18,7 +20,9 @@ export class DriverSummary implements Output {
     get totalDistance(): number {
         let totalMiles = 0;
         this.trips.forEach((trip: Trip) => {
-            totalMiles += trip.mileage;
+            if (trip.speed >= 5) {
+                totalMiles += trip.mileage;
+            }
         });
         return Math.round(totalMiles);
     }
@@ -28,9 +32,7 @@ export class DriverSummary implements Output {
     }
 
     public addTrip(trip: Trip): void {
-        if (trip.mileage / trip.duration > 5) {
-            this.trips.push(trip);
-        }
+        this.trips.push(trip);
     }
 
     public summarize(): Output {
