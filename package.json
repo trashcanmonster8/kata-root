@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Root insurance kata",
   "main": "index.js",
+  "bin": "./lib/index.js",
   "scripts": {
     "lint": "eslint . --fix",
     "test": "mocha",
