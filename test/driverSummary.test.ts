@@ -60,5 +60,13 @@ describe(DriverSummary.name, () => {
                 averageSpeed: 47,
             });
         });
+        it('discards trips over 100 mph', () => {
+            summary.addTrip(new Trip(driver, '6:00', '7:00', 104));
+            deepStrictEqual(summary.summarize(), {
+                driver: 'Fred',
+                totalDistance: 39,
+                averageSpeed: 47,
+            });
+        });
     });
 });
