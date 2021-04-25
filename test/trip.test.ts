@@ -25,4 +25,7 @@ describe(Trip.name, () => {
         const trip: Trip = Trip.parse(data.join(' '));
         strictEqual(trip.mileage, mileage);
     });
+    it('calculates trip speed', () => {
+        strictEqual(trip.speed, 8);
+    });
 });

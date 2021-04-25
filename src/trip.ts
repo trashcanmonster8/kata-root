@@ -30,6 +30,10 @@ export class Trip {
         return (this.endTime - this.startTime) / 60;
     }
 
+    get speed(): number {
+        return Math.round(this.mileage / this.duration);
+    }
+
     private parseTimetoMinutes(time: string): number {
         const timeComponents = time.split(':');
         const hourComponents = parseInt(timeComponents[0]);
