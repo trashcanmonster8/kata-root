@@ -19,6 +19,11 @@ export class Summary {
     }
 
     public addTrip(trip: Trip): void {
-        this.summaries[0].addTrip(trip);
+        const index = this.summaries.findIndex((summary: DriverSummary) => {
+            return summary.driver === trip.driver;
+        });
+        if (index >= 0) {
+            this.summaries[index].addTrip(trip);
+        }
     }
 }

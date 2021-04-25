@@ -38,9 +38,11 @@ describe(Summary.name, () => {
         });
     });
     describe('multiple drivers', () => {
-        it('#calculate adds a driver', () => {
-            const drivers: Driver[] = [new Driver('Lauren'), new Driver('Kumi')];
+        const drivers: Driver[] = [new Driver('Lauren'), new Driver('Kumi')];
+        beforeEach(() => {
             drivers.forEach((driver: Driver) => summary.addDriver(driver));
+        });
+        it('#calculate adds a driver', () => {
             deepStrictEqual(summary.calculate(), [
                 {
                     driver: drivers[0].name,
@@ -55,8 +57,6 @@ describe(Summary.name, () => {
             ]);
         });
         it('#calcuate one trip', () => {
-            const drivers: Driver[] = [new Driver('Lauren'), new Driver('Kumi')];
-            drivers.forEach((driver: Driver) => summary.addDriver(driver));
             summary.addTrip(new Trip(drivers[0], '12:01', '13:16', 42.0));
             deepStrictEqual(summary.calculate(), [
                 {
@@ -68,6 +68,30 @@ describe(Summary.name, () => {
                     driver: drivers[1].name,
                     totalDistance: 0,
                     averageSpeed: 0,
+                },
+            ]);
+        });
+        it('#calculate multiple trips', () => {
+            const newDriver: Driver = new Driver('dan');
+            summary.addDriver(newDriver);
+            summary.addTrip(new Trip(newDriver, '07:15', '07:45', 17.3));
+            summary.addTrip(new Trip(newDriver, '06:12', '06:32', 21.8));
+            summary.addTrip(new Trip(drivers[0], '12:01', '13:16', 42.0));
+            deepStrictEqual(summary.calculate(), [
+                {
+                    driver: drivers[0].name,
+                    totalDistance: 42,
+                    averageSpeed: 34,
+                },
+                {
+                    driver: drivers[1].name,
+                    totalDistance: 0,
+                    averageSpeed: 0,
+                },
+                {
+                    driver: newDriver.name,
+                    totalDistance: 39,
+                    averageSpeed: 47,
                 },
             ]);
         });
