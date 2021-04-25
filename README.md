@@ -104,3 +104,14 @@ See commit history for development of the features
   * better result would be to throw and catch exceptions for tracking
   * Examples
     * TODO: add links for examples of this pattern.
+
+## Running the Project
+
+1. Install nodejs
+2. Download the repo
+3. Run `npm install`
+4. Run `npm run run:input.txt`
+
+OR
+
+Run `ts-node ./src input.txt`.

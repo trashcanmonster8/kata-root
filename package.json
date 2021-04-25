@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Root insurance kata",
   "main": "index.js",
-  "bin": "./lib/index.js",
+  "bin": { 
+    "summarize": "ts-node ./src"
+  },
   "scripts": {
+    "run:input.txt": "ts-node ./src/index.ts input.txt",
     "lint": "eslint . --fix",
     "test": "mocha",
     "coverage": "nyc mocha",
