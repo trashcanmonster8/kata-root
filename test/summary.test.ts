@@ -54,5 +54,22 @@ describe(Summary.name, () => {
                 },
             ]);
         });
+        it('#calcuate one trip', () => {
+            const drivers: Driver[] = [new Driver('Lauren'), new Driver('Kumi')];
+            drivers.forEach((driver: Driver) => summary.addDriver(driver));
+            summary.addTrip(new Trip(drivers[0], '12:01', '13:16', 42.0));
+            deepStrictEqual(summary.calculate(), [
+                {
+                    driver: drivers[0].name,
+                    totalDistance: 42,
+                    averageSpeed: 34,
+                },
+                {
+                    driver: drivers[1].name,
+                    totalDistance: 0,
+                    averageSpeed: 0,
+                },
+            ]);
+        });
     });
 });
