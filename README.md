@@ -92,3 +92,15 @@ Kumi: 0 miles
 
 * Write happy path and ignore many edge cases for now
 * Assume text file will be well formed for now
+
+## Started Development
+
+See commit history for development of the features
+
+### Decisions made during development
+
+* Decided to handle happy path and not handle every error case.
+  * Leads to cases where trips are ignored for no clear reason
+  * better result would be to throw and catch exceptions for tracking
+  * Examples
+    * TODO: add links for examples of this pattern.
