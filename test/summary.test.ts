@@ -37,4 +37,22 @@ describe(Summary.name, () => {
             ]);
         });
     });
+    describe('multiple drivers', () => {
+        it('#calculate adds a driver', () => {
+            const drivers: Driver[] = [new Driver('Lauren'), new Driver('Kumi')];
+            drivers.forEach((driver: Driver) => summary.addDriver(driver));
+            deepStrictEqual(summary.calculate(), [
+                {
+                    driver: drivers[0].name,
+                    totalDistance: 0,
+                    averageSpeed: 0,
+                },
+                {
+                    driver: drivers[1].name,
+                    totalDistance: 0,
+                    averageSpeed: 0,
+                },
+            ]);
+        });
+    });
 });
