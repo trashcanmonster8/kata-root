@@ -71,7 +71,7 @@ describe(Summary.name, () => {
                 },
             ]);
         });
-        it('#calculate multiple trips', () => {
+        it('#calculate multiple trips and sorts by total distance', () => {
             const newDriver: Driver = new Driver('dan');
             summary.addDriver(newDriver);
             summary.addTrip(new Trip(newDriver, '07:15', '07:45', 17.3));
@@ -84,14 +84,14 @@ describe(Summary.name, () => {
                     averageSpeed: 34,
                 },
                 {
-                    driver: drivers[1].name,
-                    totalDistance: 0,
-                    averageSpeed: 0,
-                },
-                {
                     driver: newDriver.name,
                     totalDistance: 39,
                     averageSpeed: 47,
+                },
+                {
+                    driver: drivers[1].name,
+                    totalDistance: 0,
+                    averageSpeed: 0,
                 },
             ]);
         });

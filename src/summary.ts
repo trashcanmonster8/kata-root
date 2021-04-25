@@ -11,7 +11,7 @@ export class Summary {
         this.summaries.forEach((summary: DriverSummary) => {
             result.push(summary.summarize());
         });
-        return result;
+        return result.sort((a: Output, b: Output) => b.totalDistance - a.totalDistance);
     }
 
     public addDriver(driver: Driver): void {
