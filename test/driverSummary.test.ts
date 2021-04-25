@@ -42,13 +42,23 @@ describe(DriverSummary.name, () => {
         summary.addTrip(new Trip(driver, '07:15', '07:45', 17.3));
         strictEqual(summary.totalDistance, 39);
     });
-    it('outputs all data', () => {
+    describe('#summarize', () => {
         const trips: Trip[] = [new Trip(driver, '06:12', '06:32', 21.8), new Trip(driver, '07:15', '07:45', 17.3)];
         const summary: DriverSummary = new DriverSummary(driver, trips);
-        deepStrictEqual(summary.summarize(), {
-            driver: 'Fred',
-            totalDistance: 39,
-            averageSpeed: 47,
+        it('outputs all data', () => {
+            deepStrictEqual(summary.summarize(), {
+                driver: 'Fred',
+                totalDistance: 39,
+                averageSpeed: 47,
+            });
+        });
+        it('discards trips under 5 mph', () => {
+            summary.addTrip(new Trip(driver, '6:00', '7:00', 4));
+            deepStrictEqual(summary.summarize(), {
+                driver: 'Fred',
+                totalDistance: 39,
+                averageSpeed: 47,
+            });
         });
     });
 });

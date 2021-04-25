@@ -28,7 +28,9 @@ export class DriverSummary implements Output {
     }
 
     public addTrip(trip: Trip): void {
-        this.trips.push(trip);
+        if (trip.mileage / trip.duration > 5) {
+            this.trips.push(trip);
+        }
     }
 
     public summarize(): Output {
