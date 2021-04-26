@@ -105,7 +105,9 @@ See commit history for development of the features
   * Examples
     * TODO: add links for examples of this pattern.
 
-## Running the Project
+## Complete
+
+### Running the Project
 
 1. Install nodejs
 2. Download the repo
@@ -115,3 +117,9 @@ See commit history for development of the features
 OR
 
 Run `ts-node ./src input.txt`.
+
+### TechDebt
+
+* Handle error scenarios
+* Add property to `Trip` that makes the trip valid or invalid (under 5 mph vs 100 mph)
+* Handling data input and data output could be constructed better. While I'm not sure how, the index.ts file feels brittle.
